@@ -42,8 +42,8 @@ Rodar o projeto
 php artisan serve
 ```
 ### Frontend
-Depois de clonar o projeto
-- criar na raiz o arquivo _.env_ 
+Depois de clonar o projeto acesse a pasta /frontend/innyx na raiz
+- criar na pasta _./frontend/innyx_ o arquivo _.env_ 
 ```
 NODE_ENV=development
 VITE_API_URL=http://localhost:8000/api/

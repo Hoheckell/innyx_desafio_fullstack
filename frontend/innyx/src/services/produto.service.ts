@@ -121,7 +121,7 @@ export const produtoService = {
                 helper.errorThrower(error.response);
             });
     },
-    async create(produto: FormData): Promise<void>  {
+    async create(produto: FormData): Promise<IProduto>  {
         const token = sessionStorage.getItem("token");
         return await axios
             .post(`${import.meta.env.VITE_API_URL}produtos`, produto, {

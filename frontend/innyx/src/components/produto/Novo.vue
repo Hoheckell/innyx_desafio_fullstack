@@ -31,18 +31,28 @@ const chooseFiles = () => {
 const createProduto = async () => {
     showSpinner.show = true;
     if (errors.value.nome == "" && errors.value.descricao == "" && errors.value.validade == "" && errors.value.preco == "") {
-        formData.append('nome', produto.value.nome);
-        formData.append('descricao', produto.value.descricao);
-        formData.append('validade', produto.value.validade);
-        formData.append('preco', produto.value.preco);
-        formData.append('categoria_id', produto.value.categoria_id.toString());
-        await produtoService.create(formData);
-        notify({
-            title: "Ação Realizada",
-            text: "Criado com sucesso",
-            type: "success"
-        });
-        router.push('/dashboard')
+        if (produto.value.nome && produto.value.descricao && produto.value.validade && produto.value.preco && produto.value.categoria_id) {
+            formData.append('nome', produto.value.nome);
+            formData.append('descricao', produto.value.descricao);
+            formData.append('validade', produto.value.validade);
+            formData.append('preco', produto.value.preco);
+            formData.append('categoria_id', produto.value.categoria_id.toString());
+            const newProduto = await produtoService.create(formData);
+            if (newProduto) {
+                notify({
+                    title: "Ação Realizada",
+                    text: "Criado com sucesso",
+                    type: "success"
+                });
+                router.push('/dashboard')
+            }
+        } else {
+                notify({
+                    title: "Campos Obrigatórios",
+                    text: "Preencha os campos obrigatórios",
+                    type: "error"
+                });
+        }
     } else {
         notify({
             title: "Houve um erro",
@@ -92,7 +102,7 @@ const getCategorias = async () => {
     });
     showSpinner.show = false;
 }
-const validateNome = () => {
+const validateNome = () => {    
     errors.value.nome = produto.value.nome.length >= 3 && produto.value.nome.length <= 50 ? "" : "O Nome deve conter de 3 à 50 caracteres.";
 }
 
@@ -119,6 +129,7 @@ onMounted(async () => {
         <Loader v-if="showSpinner.show" />
         <div class="row mt-3">
             <div class="col-lg-2 col-md-6 col-sm-12 pt-2">
+                <h4>Imagem</h4>
                 <img :src="imageUrl" width="200" class="img-fluid" :alt="produto.nome" v-if="imageUrl != ''">
                 <img :src="'http://localhost:8000/api/image/' + produto.imagem" width="200" class="img-fluid"
                     alt="produto.nome" v-if="imageUrl == '' && produto.imagem"><br />
@@ -131,31 +142,31 @@ onMounted(async () => {
             <div class="col-lg-10 col-md-6 col-sm-12">
                 <h2>Cadastrar produto</h2>
                 <div class="form-group">
-                    <label for="nome">Nome</label>
+                    <label for="nome">Nome<span style="color:#F00">*</span></label>
                     <input type="text" name="nome" id="nome" v-model="produto.nome" class="form-control"
                         @change="validateNome" />
                     <p v-if="errors.nome" class="alert alert-danger">{{ errors.nome }}</p>
                 </div>
                 <div class="form-group">
-                    <label for="descricao">Descrição</label>
+                    <label for="descricao">Descrição<span style="color:#F00">*</span></label>
                     <input type="text" name="descricao" id="descricao" v-model="produto.descricao" class="form-control"
                         @change="validateDescricao" />
                     <p v-if="errors.descricao" class="alert alert-danger">{{ errors.descricao }}</p>
                 </div>
                 <div class="form-group">
-                    <label for="validade">Validade</label>
+                    <label for="validade">Validade<span style="color:#F00">*</span></label>
                     <input type="date" name="validade" id="validade" v-model="produto.validade" class="form-control"
                         @change="validateValidade" />
                     <p v-if="errors.validade" class="alert alert-danger">{{ errors.validade }}</p>
                 </div>
                 <div class="form-group">
-                    <label for="preco">Preço</label>
+                    <label for="preco">Preço<span style="color:#F00">*</span></label>
                     <input type="number" name="preco" id="preco" step="0.01" v-model="produto.preco" class="form-control"
                         @change="validatePreco" />
                     <p v-if="errors.preco" class="alert alert-danger">{{ errors.preco }}</p>
                 </div>
                 <div class="form-group">
-                    <label for="categoria">Categoria</label>
+                    <label for="categoria">Categoria<span style="color:#F00">*</span></label>
                     <select name="catgoria" id="catgoria" v-model="produto.categoria_id" class="form-control">
                         <option disabled>Selecione</option>
                         <option v-for="(categoria, i) in categorias" :value="categoria.id" :key="i">{{ categoria.nome }}

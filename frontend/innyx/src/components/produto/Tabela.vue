@@ -40,7 +40,7 @@ const showImage = (image?: string) => {
                                 <td>{{ moment(produto.validade).format('DD/MM/Y') }}</td>
                                 <td>{{ produto.preco }}</td>
                                 <td>{{ produto.categoria.nome }}</td>
-                                <td><a href="#" @click="showImage(produto.imagem)">Imagem</a></td>
+                                <td><a href="#" v-if="produto.imagem" @click="showImage(produto.imagem)">Imagem</a></td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <router-link :to="{ name: 'editar-produto', params: { id: produto.id } }"

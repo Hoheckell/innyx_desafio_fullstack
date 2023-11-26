@@ -26,7 +26,7 @@ class ProdutoRequest extends FormRequest
         return [
             'nome' => 'required|min:3|max:50' ,
             'descricao' => 'required|string|max:200' ,
-            'preco' => 'required|decimal:1,2|gt:0' ,
+            'preco' => 'required|numeric|gt:0' ,
             'validade' => 'required|date' ,
             'categoria_id' => 'required|integer' ,
         ];
