@@ -1,5 +1,12 @@
 ## Innyx Desafio fullstack 
 
+#### Bibliotecas utilizadas
+ - php-open-source-saver/jwt-auth -> https://github.com/PHP-Open-Source-Saver/jwt-auth Para auxiliar na implementação do acesso seguro utilizando JWT
+ - moment": "^2.29.4" -> para formatar as datas
+ - vue-awesome-paginate: "^1.1.46" -> para gerar os links para os numeros de páginas
+ - vue-router: "^4.2.5" -> para gerenciar a navegação pelas rotas
+ - vue3-spinners: "^1.2.2" -> para auxiliar no uso do spinner de loading
+
 ### Backend
 Depois de clonar o projeto 
 - criar na raiz o arquivo _.env_ configurar os acessos ao db
