@@ -18,33 +18,34 @@ yarn-error.log
 /.idea
 /.vscode
 
-/frontend/node_modules
+/frontend/innyx/node_modules
 # Logs
-/frontend/logs
-/frontend/*.log
-/frontend/npm-debug.log*
-/frontend/yarn-debug.log*
-/frontend/yarn-error.log*
-/frontend/pnpm-debug.log*
-/frontend/lerna-debug.log*
+/frontend/innyx/logs
+/frontend/innyx/*.log
+/frontend/innyx/npm-debug.log*
+/frontend/innyx/yarn-debug.log*
+/frontend/innyx/yarn-error.log*
+/frontend/innyx/pnpm-debug.log*
+/frontend/innyx/lerna-debug.log*
 
 
-/frontend/.DS_Store
-/frontend/dist
-/frontend/dist-ssr
-/frontend/coverage
-/frontend/*.local
+/frontend/innyx/.DS_Store
+/frontend/innyx/dist
+/frontend/innyx/dist-ssr
+/frontend/innyx/coverage
+/frontend/innyx/*.local
 
-/frontend/cypress/videos/
-/frontend/cypress/screenshots/
+/frontend/innyx/cypress/videos/
+/frontend/innyx/cypress/screenshots/
 
 # Editor directories and files
-/frontend/.vscode/*
-/frontend/!.vscode/extensions.json
-/frontend/.env
-/frontend/.idea
-/frontend/*.suo
-/frontend/*.ntvs*
-/frontend/*.njsproj
-/frontend/*.sln
-/frontend/*.sw?
+/frontend/innyx/.vscode
+/frontend/innyx/.vscode/*
+/frontend/innyx/!.vscode/extensions.json
+/frontend/innyx/.env
+/frontend/innyx/.idea
+/frontend/innyx/*.suo
+/frontend/innyx/*.ntvs*
+/frontend/innyx/*.njsproj
+/frontend/innyx/*.sln
+/frontend/innyx/*.sw?
